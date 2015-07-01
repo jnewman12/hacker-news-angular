@@ -1,17 +1,32 @@
+angular.module('flapperNews', [])
+.factory('posts', [function(){
+	var o = {
+		posts: []
+	};
+	return o;
+}])
+
+// services are a means of keeping data around for the lifetime of an application, and can be used across different controllers
+// the 3 ways to do that are a factory, service, or provider
+// factory; you create an object, add properties to it, then return that same object. when you pass the service into the controller, those properties on the object are available in that controller
+// 
+
+
 // setting up angular app called 'Flapper News'
 angular.module('flapperNews', [])
 // setting up a controller, as an object on the angular.module
 .controller('MainCtrl', [
 	'$scope', 
-	function($scope){
-		// where the test variable in the html comes from
-		$scope.posts = [
-		{title: 'post 1', upvotes: 5},
-		{title: 'post 2', upvotes: 2},
-		{title: 'post 3', upvotes: 15},
-		{title: 'post 4', upvotes: 9},
-		{title: 'post 5', upvotes: 4}
-		];
+	'posts', // referring to the factory
+	function($scope, posts){
+		$scope.posts = 
+		// {title: 'post 1', upvotes: 5},
+		// {title: 'post 2', upvotes: 2},
+		// {title: 'post 3', upvotes: 15},
+		// {title: 'post 4', upvotes: 9},
+		// {title: 'post 5', upvotes: 4}
+		posts.posts;
+		
 	// scope variable serves as the bridge between angular controllers and angular templates
 	// if you want something to be accessible in the template such as a function (method) or certain variable, bind it to scope
 	$scope.addPost = function(){
