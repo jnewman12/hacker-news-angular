@@ -1,9 +1,17 @@
-angular.module('flapperNews', [])
-.factory('posts', [function(){
-	var o = {
-		posts: []
-	};
-	return o;
+angular.module('flapperNews', ['ui.router'])
+// setting up the config and defining our routes
+.config([
+	'$stateProvider',
+	'$urlRouterProvider',
+	function($stateProvider, $urlRouterProvider) {
+		$stateProvider
+		.state('home', {
+			url: '/home',
+			templateUrl: '/home.html',
+			controller: 'MainCtrl'
+		});
+
+	$urlRouterProvider.otherwise('home');	
 }])
 
 // services are a means of keeping data around for the lifetime of an application, and can be used across different controllers
@@ -45,3 +53,10 @@ angular.module('flapperNews', [])
 		post.upvotes += 1;
 	};
 }]);
+
+.factory('posts', [function(){
+	var o = {
+		posts: []
+	};
+	return o;
+}])
