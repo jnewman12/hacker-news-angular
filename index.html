@@ -36,9 +36,10 @@
 
 	<form ng-submit="addPost()">
 	<!-- ng-model binds the context of the textbox to scope. Our main-ctrl can access the contents of the text box using $scope.title -->
-		<input type="text" placeholder="Title" ng-model="title"></input> <br/>
-		<input type="text" placeholder="Link" ng-model="link"></input> <br/>
-		<button type="submit">Post!</button>
+		<input type="text" placeholder="Title" ng-model="title" class="form-control"></input> <br/>
+		<input type="text" placeholder="Link" ng-model="link" class="form-control"></input> 
+		<br/>
+		<button type="submit" class="btn btn-primary purple">Post!</button>
 	</form>
   </div>
  </div>

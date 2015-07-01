@@ -15,6 +15,7 @@ angular.module('flapperNews', [])
 	// scope variable serves as the bridge between angular controllers and angular templates
 	// if you want something to be accessible in the template such as a function (method) or certain variable, bind it to scope
 	$scope.addPost = function(){
+	// saying if title is empty, dont do anything	
 		if(!$scope.title || $scope.title === '') { return;}
 		$scope.posts.push({
 			title: $scope.title,
