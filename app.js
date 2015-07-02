@@ -5,10 +5,17 @@ angular.module('flapperNews', ['ui.router'])
 	'$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider) {
 		$stateProvider
+		// states are the routes
 		.state('home', {
 			url: '/home',
 			templateUrl: '/home.html',
 			controller: 'MainCtrl'
+		});
+		.state('posts', {
+			// route parameter similar to :id in sinatra
+			url: '/posts/{id}',
+			templateUrl: '/posts.html',
+			controller: 'PostsCtrl'
 		});
 
 	$urlRouterProvider.otherwise('home');	
@@ -26,8 +33,9 @@ angular.module('flapperNews', [])
 // setting up a controller, as an object on the angular.module
 .controller('MainCtrl', [
 	'$scope', 
-	'posts', // referring to the factory
-	function($scope, posts){
+	// '$stateParams'
+	'posts', // referring to the factory (service)
+	function($scope, $stateParams, posts){
 		$scope.posts = 
 		// {title: 'post 1', upvotes: 5},
 		// {title: 'post 2', upvotes: 2},
@@ -44,7 +52,11 @@ angular.module('flapperNews', [])
 		$scope.posts.push({
 			title: $scope.title,
 			link: $scope.link,
-			upvotes: 0
+			upvotes: 0,
+			comments: [
+			{author: 'Joe', body: 'Cool stuff!', upvotes: 0},
+			{author: 'Bob', body: 'Great idea, but it is wrong', upvotes: 0}
+			]
 		});
 		$scope.title = '';
 		$scope.link = '';
@@ -53,6 +65,10 @@ angular.module('flapperNews', [])
 	$scope.incrementUpvotes = function(post) {
 		post.upvotes += 1;
 	};
+}]);
+
+.controller('PostsCtrl', ['$scope', '$stateParams', 'posts', function($scope, $stateParams, posts){
+
 }]);
 
 .factory('posts', [function(){
