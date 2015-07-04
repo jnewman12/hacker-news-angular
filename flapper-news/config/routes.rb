@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  # this roots the project as rendering the application.html page
+  root to: 'application#angular'
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
