@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # this is the roots to call in routes.rb
+  # this is the root to: call in routes.rb
   def angular
   	render 'layout/application'
   end
