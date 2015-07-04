@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
 
   # this is the root to: call in routes.rb
   def angular
-  	render 'layout/application'
+  	render 'layouts/application'
   end
 end

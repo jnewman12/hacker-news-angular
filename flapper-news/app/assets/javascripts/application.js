@@ -1,5 +1,4 @@
-//= require_tree .
-//= require app.js
 //= require angular
+//= require angular-rails-templates
 //= require angular-ui-router
-//= angular-rails-templates
+//= require_tree .
