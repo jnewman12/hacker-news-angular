@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+	# so users who arent registered/signed in can't post comment, upvote etc
+	before_filter :authenticate_user!, only: [:create, :upvote]
 
 	def index
 		respond_with Post.all

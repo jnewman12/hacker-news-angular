@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # this roots the project as rendering the application.html page
   root to: 'application#angular'
 

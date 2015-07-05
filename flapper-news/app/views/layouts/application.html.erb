@@ -9,6 +9,8 @@
 <body ng-app="flapperNews">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
+    <!-- including the navbar -->
+    <div ng-include="'nav/_nav.html'"></div>
     <!-- this is like the application.html file within the file. Rails will render the application.html page as the root
     and angular will render everything under the ui-view. The ui-view is like the rails <%# yield %> -->
       <ui-view></ui-view>
