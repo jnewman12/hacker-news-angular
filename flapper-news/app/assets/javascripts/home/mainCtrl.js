@@ -9,14 +9,9 @@ App.controller('MainCtrl', [
 	$scope.addPost = function(){
 	// saying if title is empty, dont do anything	
 		if(!$scope.title || $scope.title === '') { return;}
-		$scope.posts.push({
+		posts.create({
 			title: $scope.title,
 			link: $scope.link,
-			upvotes: 0,
-			comments: [
-			{author: 'Joe', body: 'Cool stuff!', upvotes: 0},
-			{author: 'Bob', body: 'Great idea, but it is wrong', upvotes: 0}
-			]
 		});
 		$scope.title = '';
 		$scope.link = '';

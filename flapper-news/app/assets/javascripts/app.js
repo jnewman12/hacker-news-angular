@@ -11,13 +11,28 @@ App.config([
 		.state('home', {
 			url: '/home',
 			templateUrl: 'home/_home.html',
-			controller: 'MainCtrl'
+			controller: 'MainCtrl',
+			resolve: {
+				postPromise: ['posts', function(posts){
+					// our posts service
+					return posts.getAll();
+				}]
+			}
 		})
 		.state('posts', {
 			// route parameter similar to :id in sinatra
 			url: '/posts/{id}',
 			templateUrl: 'posts/_posts.html',
-			controller: 'PostsCtrl'
+			controller: 'PostsCtrl',
+			resolve: {
+				post: ['$stateParams', 'posts', function($stateParams, posts) {
+					return posts.get($stateParams.id);
+				}]
+				/*
+				The Angular ui-router detects we are entering the posts state and will then automatically query the server for 
+				the full post object, including comments. Only after the request has returned will the state finish loading.
+				*/
+			}
 		})
 
 	$urlRouterProvider.otherwise('home');	

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:create, :index, :show] do 
     resources :comments, only: [:show, :create] do 
       member do 
+        # member routes require an id
         put '/upvote' => 'comments#upvote'
       end
     end
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
   # this is for the has_many/belongs_to. A posts has_many comments, and a comment belongs_to a post
   # in our generators we ran post:references in our comment model which sets up the comment table to have a post_id reference
 
-  # running rake routes returns this
+  # running rake routes returns this (the (.:format) refers to render as json so posts/:id.json)
 #                Prefix Verb URI Pattern                                   Controller#Action
 #                root GET  /                                             application#angular
 # upvote_post_comment PUT  /posts/:post_id/comments/:id/upvote(.:format) comments#upvote
