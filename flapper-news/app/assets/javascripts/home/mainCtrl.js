@@ -12,6 +12,7 @@ App.controller('MainCtrl', [
 		posts.create({
 			title: $scope.title,
 			link: $scope.link,
+			upvotes: 0
 		});
 		$scope.title = '';
 		$scope.link = '';
