@@ -4,18 +4,17 @@ Rails.application.routes.draw do
   root to: 'application#angular'
 
 
-  resources :posts, only: [:create, :index, :show] do 
-    resources :comments, only: [:show, :create] do 
+  resources :posts do 
+    member do 
+      put '/upvote' => 'posts#upvote'
+    end
+    resources :comments do
       member do 
         # member routes require an id
         put '/upvote' => 'comments#upvote'
       end
     end
-    member do 
-      put '/upvote' => 'posts#upvote'
-    end
   end
-
   # this is for the has_many/belongs_to. A posts has_many comments, and a comment belongs_to a post
   # in our generators we ran post:references in our comment model which sets up the comment table to have a post_id reference
 

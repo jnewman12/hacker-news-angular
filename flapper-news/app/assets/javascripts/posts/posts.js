@@ -23,7 +23,7 @@ App.factory('posts', [
     o.upvote = function(post) {
     	return $http.put('/posts/' + post.id + '/upvote.json')
     	.success(function(data){
-    		post.upvotes += 1;
+    		post.upvotes = post.upvotes + 1;
     	});
     };
     o.get = function(id) {
@@ -41,4 +41,4 @@ App.factory('posts', [
     	});
     };
     return o;
-}])
+}]);

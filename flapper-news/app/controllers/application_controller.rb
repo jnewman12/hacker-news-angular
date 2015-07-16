@@ -8,15 +8,14 @@ class ApplicationController < ActionController::Base
   # this is the root to: call in routes.rb
 
   # this is our login/register state in app.js
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  #before_action :configure_permitted_parameters, if: :devise_controller?
 
   def angular
   	render 'layouts/application'
   end
 
   private
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :username
-  end
-end
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.for(:sign_up) << :username
+  # end
 end
